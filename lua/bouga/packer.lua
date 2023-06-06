@@ -13,6 +13,21 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} },
   }
 
+	-- Dir telescope (telescope for search in dir)
+  use {
+    "princejoogie/dir-telescope.nvim",
+    -- telescope.nvim is a required dependency
+    requires = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("dir-telescope").setup({
+        -- these are the default options set
+        hidden = true,
+        no_ignore = false,
+        show_preview = true,
+      })
+    end,
+  }
+
   -- Sonokai colorscheme
   use { 'sainnhe/sonokai', as = 'sonokai' }
 
@@ -81,4 +96,13 @@ return require('packer').startup(function(use)
 			require('gitsigns').setup()
 		end
 	}
+
+	-- Comment
+	use { 'tpope/vim-commentary' }
+
+	-- Indent lines
+	use { 'lukas-reineke/indent-blankline.nvim' }
+
+	-- Colorizer
+	use { 'norcalli/nvim-colorizer.lua' }
 end)

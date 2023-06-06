@@ -1,13 +1,34 @@
 -- LSP config
 local lsp = require('lsp-zero').preset({})
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(bufnr, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
 lsp.ensure_installed({
 	'tsserver',
 	'eslint',
+})
+
+-- Configure lua_ls
+require('lspconfig').lua_ls.setup({
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+				path = vim.split(package.path, ';'),
+			},
+			diagnostics = {
+				globals = { 'vim' },
+			},
+			workspace = {
+				library = {
+					[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+					[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+				},
+			},
+		},
+	},
 })
 
 -- CMP config

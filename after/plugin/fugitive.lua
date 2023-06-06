@@ -10,3 +10,5 @@ vim.keymap.set('n', '<leader>gp', function() vim.cmd('Git push') end)
 vim.keymap.set('n', '<leader>gd', function() vim.cmd('Gdiffsplit!') end)
 -- git write
 vim.keymap.set('n', '<leader>gw', function() vim.cmd('Gwrite') end)
+-- git pull
+vim.keymap.set('n', '<leader>gl', function() vim.cmd('Git pull') end)
