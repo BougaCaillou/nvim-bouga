@@ -44,6 +44,8 @@ vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
 
 -- Navigate in insert mode
+-- Quickfix: <C-h> was overriden by something so first, unmap it
+vim.keymap.set('i', '<C-h>', '')
 vim.keymap.set('i', '<C-h>', '<Left>')
 vim.keymap.set('i', '<C-l>', '<Right>')
 vim.keymap.set('i', '<C-k>', '<Up>')
