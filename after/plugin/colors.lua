@@ -1,9 +1,8 @@
 
 -- Set colorscheme and stuff
-function ColorMyStuff(color)
-	-- Default colorscheme
-	color = color or 'sonokai'
-	vim.cmd.colorscheme(color)
+function ColorMyStuff()
+  vim.o.background = 'dark'
+  vim.cmd([[colorscheme gruvbox]])
 end
 
 ColorMyStuff()

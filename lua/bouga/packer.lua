@@ -31,6 +31,9 @@ return require('packer').startup(function(use)
   -- Sonokai colorscheme
   use { 'sainnhe/sonokai', as = 'sonokai' }
 
+	-- Gruvbox colorscheme
+	use { 'ellisonleao/gruvbox.nvim' }
+
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'} }
 
