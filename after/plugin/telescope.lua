@@ -1,3 +1,12 @@
+
+require('telescope').setup({
+  pickers = {
+    find_files = {
+      theme = "ivy",
+    },
+  }
+})
+
 local builtin = require('telescope.builtin')
 
 -- All file search
@@ -5,7 +14,7 @@ vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 
 -- Project search
 vim.keymap.set('n', '<leader>ps', function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+  builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
 -- Sub directories search

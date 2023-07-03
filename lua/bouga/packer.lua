@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} },
   }
 
-	-- Dir telescope (telescope for search in dir)
+  -- Dir telescope (telescope for search in dir)
   use {
     "princejoogie/dir-telescope.nvim",
     -- telescope.nvim is a required dependency
@@ -31,11 +31,14 @@ return require('packer').startup(function(use)
   -- Sonokai colorscheme
   use { 'sainnhe/sonokai', as = 'sonokai' }
 
-	-- Gruvbox colorscheme
-	use { 'ellisonleao/gruvbox.nvim' }
+  -- Gruvbox colorscheme
+  use { 'ellisonleao/gruvbox.nvim' }
 
   -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'} }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
 
   -- NvimTree
   use { 'nvim-tree/nvim-tree.lua' }
@@ -47,23 +50,36 @@ return require('packer').startup(function(use)
   -- Fugitive
   use { 'tpope/vim-fugitive' }
 
-  -- LSP
+  -- Mason (managing lsp servers)
   use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {                                      -- Optional
-        'williamboman/mason.nvim',
-        run = function() pcall(vim.cmd, 'MasonUpdate') end,
-      },
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+  }
 
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},     -- Required
-      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
+  -- Mason lsp config
+  use {
+    'williamboman/mason-lspconfig.nvim',
+  }
+
+  -- LSP config with dependencies
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v1.*",
+        run = "make install_jsregexp"
+      },
+      {
+        "ray-x/lsp_signature.nvim",
+        config = function()
+          require "lsp_signature".on_attach()
+        end
+      }
     }
   }
 
@@ -89,23 +105,23 @@ return require('packer').startup(function(use)
     end
   }
 
-	-- Feline
-	use { 'freddiehaddad/feline.nvim' }
+  -- Feline
+  use { 'freddiehaddad/feline.nvim' }
 
-	-- Git signs
-	use {
-		'lewis6991/gitsigns.nvim',
-		config = function()
-			require('gitsigns').setup()
-		end
-	}
+  -- Git signs
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
 
-	-- Comment
-	use { 'tpope/vim-commentary' }
+  -- Comment
+  use { 'tpope/vim-commentary' }
 
-	-- Indent lines
-	use { 'lukas-reineke/indent-blankline.nvim' }
+  -- Indent lines
+  use { 'lukas-reineke/indent-blankline.nvim' }
 
-	-- Colorizer
-	use { 'norcalli/nvim-colorizer.lua' }
+  -- Colorizer
+  use { 'norcalli/nvim-colorizer.lua' }
 end)
