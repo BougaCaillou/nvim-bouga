@@ -40,6 +40,14 @@ return require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
+  -- Treesitter context (show context of the cursor, like VS Code "sticky" context)
+  use {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      require('treesitter-context').setup()
+    end
+  }
+
   -- NvimTree
   use { 'nvim-tree/nvim-tree.lua' }
   use { 'nvim-tree/nvim-web-devicons' }
