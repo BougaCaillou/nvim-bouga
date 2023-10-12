@@ -28,12 +28,6 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Sonokai colorscheme
-  use { 'sainnhe/sonokai', as = 'sonokai' }
-
-  -- Gruvbox colorscheme
-  use { 'ellisonleao/gruvbox.nvim' }
-
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -54,9 +48,6 @@ return require('packer').startup(function(use)
 
   -- Undo tree
   use { 'mbbill/undotree' }
-
-  -- Fugitive
-  use { 'tpope/vim-fugitive' }
 
   -- Mason (managing lsp servers)
   use {
@@ -113,8 +104,11 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- Feline
-  use { 'freddiehaddad/feline.nvim' }
+  -- Lualine
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+  }
 
   -- Git signs
   use {
@@ -132,4 +126,31 @@ return require('packer').startup(function(use)
 
   -- Colorizer
   use { 'norcalli/nvim-colorizer.lua' }
+
+  -- Window swapper
+  use { 'xorid/swap-split.nvim' }
+
+  -- Neogit
+  use {
+    'NeogitOrg/neogit',
+    config = function()
+      require('neogit').setup {}
+    end
+  }
+
+  -- Spectre, search and replace plugin powered with regex
+  use { 'nvim-pack/nvim-spectre' }
+
+  -- ALL COLORSCHEMES --
+
+  use { 'sainnhe/sonokai', as = 'sonokai' }
+
+  use { 'ellisonleao/gruvbox.nvim' }
+
+  use { 'Shatur/neovim-ayu' }
+
+  use { 'EdenEast/nightfox.nvim' }
+
+  use { 'folke/tokyonight.nvim' }
+
 end)

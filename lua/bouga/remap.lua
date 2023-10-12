@@ -4,9 +4,11 @@ vim.g.mapleader = ' '
 
 -- Ease nvim use
 vim.keymap.set('i', 'kj', '<Esc>')
+vim.keymap.set('i', 'jk', '<Esc>')
 vim.keymap.set('n', '<leader>kj', ':NvimTreeOpen<CR><C-w>l:wq<CR>')
 vim.keymap.set({ 'n', 'v' }, ';', ':')
 vim.keymap.set('t', '<leader>kj', '<C-\\><C-n>')
+vim.keymap.set('t', '<leader>jk', '<C-\\><C-n>')
 
 -- Move line up and down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -34,6 +36,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d')
 -- Nope
 vim.keymap.set('n', 'Q', '<nop>')
 
+-- Exit vim
+vim.keymap.set('n', '<leader>Q', ':qa<CR>')
+
 -- Substitute current word
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
@@ -54,6 +59,15 @@ vim.keymap.set('i', '<C-j>', '<Down>')
 -- Source scurrent file
 vim.keymap.set('n', '<leader><leader>', function() vim.cmd('so') end)
 
--- Because something is broken, expandtab unset itself T_T
-vim.keymap.set({ 'n', 'i' }, '<leader>et', function() vim.cmd('set et') end)
+-- Fold code
+vim.keymap.set('n', '<leader>fb', '$zf%')
 
+-- Indent code keymaps
+vim.keymap.set('n', '<S-h>', '<<')
+vim.keymap.set('n', '<S-l>', '>>')
+-- if in visual mode, keep selection
+vim.keymap.set('v', '<S-h>', '<gv')
+vim.keymap.set('v', '<S-l>', '>gv')
+
+-- Equalize splits
+vim.keymap.set('n', '<leader>=', '<C-w>=')
