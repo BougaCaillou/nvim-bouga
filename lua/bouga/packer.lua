@@ -42,6 +42,9 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Treesitter rainbow (colorize brackets and stuff)
+  use { 'HiPhish/rainbow-delimiters.nvim' }
+
   -- NvimTree
   use { 'nvim-tree/nvim-tree.lua' }
   use { 'nvim-tree/nvim-web-devicons' }
@@ -140,6 +143,9 @@ return require('packer').startup(function(use)
 
   -- Spectre, search and replace plugin powered with regex
   use { 'nvim-pack/nvim-spectre' }
+
+  -- Transparent background utility
+  use { 'xiyaowong/nvim-transparent' }
 
   -- ALL COLORSCHEMES --
 
