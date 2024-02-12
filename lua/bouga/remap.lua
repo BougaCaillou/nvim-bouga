@@ -1,5 +1,5 @@
 
--- Ultimage leader key
+-- Ultimate leader key
 vim.g.mapleader = ' '
 
 -- Ease nvim use
@@ -71,3 +71,62 @@ vim.keymap.set('v', '<S-l>', '>gv')
 
 -- Equalize splits
 vim.keymap.set('n', '<leader>=', '<C-w>=')
+
+-- Wrap codes with parentheses/brackets/braces
+vim.keymap.set('v', '(', 'c(<C-r>")<Esc>vi(')
+vim.keymap.set('v', '[', 'c[<C-r>"]<Esc>vi[')
+vim.keymap.set('v', '{', 'c{<C-r>"}<Esc>vi{')
+
+-- Change quotes to single/double/backquotes. Single keymap to cycle through.
+vim.keymap.set('n', '<leader>q', function ()
+  -- Define valid quotes
+  local valid_quotes = { "'", '"', '`' }
+
+  -- Get the current line and cursor position
+  local line = vim.fn.getline('.')
+  local col = vim.fn.col('.')
+
+  -- Find the opening and closing quotes for the string
+  local start_quote_index, end_quote_index, quote_char
+  for i = col, 1, -1 do
+    local char = line:sub(i, i)
+    if vim.tbl_contains(valid_quotes, char) then
+      quote_char = char
+      start_quote_index = i
+      break
+    end
+  end
+  for i = col, #line do
+    local char = line:sub(i, i)
+    if char == quote_char then
+      end_quote_index = i
+      break
+    end
+  end
+
+  -- If both quotes are found, cycle them
+  if start_quote_index and end_quote_index then
+    local current_quote_index = vim.fn.index(valid_quotes, quote_char)
+    local next_quote_index = (current_quote_index + 1) % #valid_quotes + 1
+    local new_quote = valid_quotes[next_quote_index]
+
+    line = line:sub(1, start_quote_index - 1)
+      .. new_quote
+      .. line:sub(start_quote_index + 1, end_quote_index - 1)
+      .. new_quote
+      .. line:sub(end_quote_index + 1)
+    vim.fn.setline('.', line)
+  end
+end)
+
+-- Converts a one line javascript import to multiline
+vim.keymap.set('n', '<leader>im', 'f}<Left>i,<Esc>F{ciB<CR><C-r>"<BS><CR><Esc>=<Up>:s/, /,\\r/g<CR>=iB')
+
+-- Terminal openers
+vim.keymap.set('n', '<leader>tv', ':vsplit term://zsh<CR>i')
+vim.keymap.set('n', '<leader>th', ':split term://zsh<CR>i')
+
+-- Quit terminal mode
+vim.keymap.set('t', 'kj', '<C-\\><C-n>')
+vim.keymap.set('t', 'jk', '<C-\\><C-n>')
+

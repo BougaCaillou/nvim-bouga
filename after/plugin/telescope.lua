@@ -1,11 +1,5 @@
 
-require('telescope').setup({
-  pickers = {
-    find_files = {
-      theme = "ivy",
-    },
-  }
-})
+require('telescope').setup()
 
 local builtin = require('telescope.builtin')
 

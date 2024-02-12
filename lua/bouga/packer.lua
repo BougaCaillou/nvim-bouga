@@ -134,18 +134,15 @@ return require('packer').startup(function(use)
   use { 'xorid/swap-split.nvim' }
 
   -- Neogit
-  use {
-    'NeogitOrg/neogit',
-    config = function()
-      require('neogit').setup {}
-    end
-  }
+  use { 'NeogitOrg/neogit' }
 
   -- Spectre, search and replace plugin powered with regex
   use { 'nvim-pack/nvim-spectre' }
 
   -- Transparent background utility
   use { 'xiyaowong/nvim-transparent' }
+
+  use { 'sindrets/diffview.nvim' }
 
   -- ALL COLORSCHEMES --
 
