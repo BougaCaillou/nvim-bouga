@@ -142,6 +142,7 @@ return require('packer').startup(function(use)
   -- Transparent background utility
   use { 'xiyaowong/nvim-transparent' }
 
+  -- Diffview plugin for neogit (does not work)
   use { 'sindrets/diffview.nvim' }
 
   -- ALL COLORSCHEMES --

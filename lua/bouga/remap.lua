@@ -6,9 +6,8 @@ vim.g.mapleader = ' '
 vim.keymap.set('i', 'kj', '<Esc>')
 vim.keymap.set('i', 'jk', '<Esc>')
 vim.keymap.set('n', '<leader>kj', ':NvimTreeOpen<CR><C-w>l:wq<CR>')
+vim.keymap.set('n', '<leader>jk', ':NvimTreeOpen<CR><C-w>l:wq<CR>')
 vim.keymap.set({ 'n', 'v' }, ';', ':')
-vim.keymap.set('t', '<leader>kj', '<C-\\><C-n>')
-vim.keymap.set('t', '<leader>jk', '<C-\\><C-n>')
 
 -- Move line up and down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
