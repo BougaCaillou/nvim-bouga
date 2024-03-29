@@ -129,3 +129,9 @@ vim.keymap.set('n', '<leader>th', ':split term://zsh<CR>i')
 vim.keymap.set('t', 'kj', '<C-\\><C-n>')
 vim.keymap.set('t', 'jk', '<C-\\><C-n>')
 
+-- TMUX navigation keymaps
+vim.keymap.set('n', '<C-h>', '<Cmd>NvimTmuxNavigateLeft<CR>')
+vim.keymap.set('n', '<C-l>', '<Cmd>NvimTmuxNavigateRight<CR>')
+vim.keymap.set('n', '<C-k>', '<Cmd>NvimTmuxNavigateUp<CR>')
+vim.keymap.set('n', '<C-j>', '<Cmd>NvimTmuxNavigateDown<CR>')
+

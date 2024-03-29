@@ -145,6 +145,15 @@ return require('packer').startup(function(use)
   -- Diffview plugin for neogit (does not work)
   use { 'sindrets/diffview.nvim' }
 
+  -- TMUX navigator
+  use {
+    'alexghergh/nvim-tmux-navigation',
+    as = 'nvim-tmux-navigation',
+    config = function()
+      require('nvim-tmux-navigation').setup{}
+    end
+  }
+
   -- ALL COLORSCHEMES --
 
   use { 'sainnhe/sonokai', as = 'sonokai' }
